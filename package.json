@@ -1,0 +1,26 @@
+{
+	"name": "fastify-learn",
+	"version": "1.0.0",
+	"description": "",
+	"main": "dist/index.js",
+	"scripts": {
+		"build:ts": "tsc",
+		"dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
+		"dev:start": "nodemon dist/index.js",
+		"start": "npm run build:ts && node dist/index.js",
+		"test": "npm run build:ts && tsc -p test/tsconfig.json && c8 tap --ts \"test/**/*.test.ts\"",
+		"watch:ts": "tsc -w"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@fastify/type-provider-json-schema-to-ts": "^3.0.0",
+		"fastify": "^4.28.1",
+		"fastify-tsconfig": "^2.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22.2.0",
+		"concurrently": "^8.2.2",
+		"typescript": "^5.5.4"
+	}
+}

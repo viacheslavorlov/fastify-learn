@@ -39,12 +39,8 @@ server.route({
 	},
 });
 //@ts-ignore
-function business(request, reply) {
-	console.log('request', request);
-	//@ts-ignore
-	// `this` is the Fastify application instance
-	reply.send({ helloFrom: this.server.address() });
-	
+function business(request, reply) { // @ts-ignore
+	return { helloFrom: this.server.address() };
 }
 server.get('/server', business);
 
@@ -53,6 +49,13 @@ server.get('/fail', (request, reply) => {
 	console.log('fail', this);
 	// @ts-ignore
 	reply.send({ helloFrom: this.server.address() });
+});
+
+server.get('/multi', function multi(request, reply) {
+	reply.send('one');
+	reply.send('two');
+	reply.send('three');
+	this.log.info('this line is executed');
 });
 
 server

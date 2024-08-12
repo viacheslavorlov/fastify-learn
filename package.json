@@ -9,7 +9,8 @@
 		"dev:start": "nodemon dist/index.js",
 		"start": "npm run build:ts && node dist/index.js",
 		"test": "npm run build:ts && tsc -p test/tsconfig.json && c8 tap --ts \"test/**/*.test.ts\"",
-		"watch:ts": "tsc -w"
+		"watch:ts": "tsc -w",
+		"prettier": "prettier \"src/**/*.ts\" --write"
 	},
 	"author": "",
 	"license": "ISC",
@@ -21,6 +22,7 @@
 	"devDependencies": {
 		"@types/node": "^22.2.0",
 		"concurrently": "^8.2.2",
+		"prettier": "3.3.3",
 		"typescript": "^5.5.4"
 	}
 }
